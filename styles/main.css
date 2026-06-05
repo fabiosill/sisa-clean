@@ -279,6 +279,9 @@
     /* RESPONSIVE */
     @media(max-width:900px){
       .nav-links { display: none; }
+      .nav-inner{ padding: 14px 16px; }
+      .logo{ margin-right: 12px; }
+      .btn{ padding: 12px 20px; }
       .hamburger { display: flex; }
       .hero-inner { grid-template-columns: 1fr; }
       .hero-img-side { margin-top: 32px; }
@@ -299,4 +302,16 @@
       .hero-btns { flex-direction: column; }
       .step { flex-direction: column; align-items: center; text-align: center; }
       .step-num { margin-right: 0; margin-bottom: 14px; }
-    }
+      .reviews-track{ animation: scroll-left 7s linear infinite; }
+        .review-card{
+    min-width: 260px;
+    max-width: 260px;
+  }
+
+  .review-text{
+    white-space: normal;
+    overflow-wrap: break-word;
+  }
+
+      .diff{ display: none; }
+}   
