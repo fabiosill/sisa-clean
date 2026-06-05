@@ -1,3 +1,35 @@
+/* CARROSSEL — loop infinito com duplicação dinâmica */
+  (function initCarousel() {
+    const track = document.querySelector('.reviews-track');
+    if (!track) return;
+
+    // Duplica os cards originais para garantir o loop contínuo
+    const originals = Array.from(track.children);
+    originals.forEach(card => {
+      const clone = card.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      track.appendChild(clone);
+    });
+
+    // Calcula a largura total do conjunto original (metade do track)
+    function getTotalWidth() {
+      const gap = 22; // gap em px igual ao CSS
+      return originals.reduce((acc, card) => acc + card.offsetWidth + gap, 0);
+    }
+
+    // Ajusta duração e shift via variáveis CSS
+    function updateCarousel() {
+      const totalPx = getTotalWidth();
+      const speed = 80; // px por segundo
+      const duration = Math.round(totalPx / speed);
+      track.style.setProperty('--carousel-duration', duration + 's');
+      track.style.setProperty('--carousel-shift', '-' + totalPx + 'px');
+    }
+
+    updateCarousel();
+    window.addEventListener('resize', updateCarousel);
+  })();
+
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
